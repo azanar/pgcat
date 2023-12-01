@@ -4,11 +4,7 @@ version = "1.1.2-dev2"
 description = "PostgreSQL pooler with sharding, load balancing and failover support."
 license = "MIT"
 edition = "2021"
-include = ["/pgcat.toml", "release/*"]
-
-[[bin]]
-name = "pgcat"
-path = "src/main.rs"
+include = ["/pgcat.toml", "src/*", "pgcat.service"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
