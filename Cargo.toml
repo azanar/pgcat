@@ -1,7 +1,10 @@
 [package]
 name = "pgcat"
 version = "1.1.2-dev2"
+description = "PostgreSQL pooler with sharding, load balancing and failover support."
+license = "MIT"
 edition = "2021"
+include = ["/pgcat.toml", "release/*"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
@@ -53,3 +56,9 @@ lru = "0.12.0"
 [target.'cfg(not(target_env = "msvc"))'.dependencies]
 jemallocator = "0.5.0"
 
+[package.metadata.generate-rpm]
+assets = [
+        { source = "target/release/pgcat", dest = "/usr/bin/pgcat", mode = "755" },
+        { source = "target/release/pgcat.toml", dest = "/etc/pgcat/pgcat.toml", mode = "644" },
+        { source = "target/release/release/systemd/pgcat.service", dest = "/etc/systemd/system/pgcat.service", mode = "644" }
+]
